@@ -1,0 +1,134 @@
+
+/* 사이드바 기본 형식 */
+.sidebar{
+    flex-shrink: 0;
+    background-color: black;
+    color: white;
+    width: 200px;
+    height: 100vh;
+    display: inline-block;
+}
+
+.sidebar .text{
+    color: white;
+    font-size : 16px;
+    font-weight : 600;
+    line-height : 55px;
+    text-align: center;
+    background: #1e1e1e;
+    letter-spacing: 1px;
+}
+
+/* 대메뉴 체크박스 안보이게 함 */
+input[id*="main"] {
+    display: none;
+} 
+/* 대메뉴 클릭되지 않았을 때 기본 글씨 디자인과 아래 보더라인 */
+input[id*="main"] + label {
+    
+    display: block;
+    font-family: 'Noto Sans', sans-serif;
+      padding-left: 10px; 
+      padding-top: 10px;
+      padding-bottom:15px ;
+    font-size: 12px;
+    border-bottom: 0;
+    cursor:pointer;
+    position: relative;
+    border-bottom: 1px solid gray;
+}
+
+/* 서브메뉴 클릭되지 않았을 때 기본 글씨 디자인 */
+ .notact{
+   color: white;
+   text-decoration: none;
+}   
+
+/* 대메뉴 화살표 동적 이미지 형식 */
+input[id*="main"] + label em{
+     position:absolute;
+     top: 60%;
+
+     right:10px;
+     width:20px;
+     height: 20px;
+     margin-top:-15px;
+    
+     display: inline-block;
+     background:url('/static/img/arrow2.png') 0 0 no-repeat; 
+     background-size:20px;  
+     transition: all .35s;
+         
+}
+
+/* 서브메뉴 디자인 */
+input[id*="main"] + label + div{
+    padding-left: 20px;
+    line-height: 1px;
+        /* 서브 메뉴의 높이를 설정한다.     */
+    max-height: 0;
+    transition: all .35s;
+    overflow:hidden;
+    background-color: black;
+    font-size: 11px;
+    
+}
+
+/* 서브메뉴 패딩 약간 넣음 */
+input[id*="main"] + label + div > p{
+    
+    padding: 10px;
+}
+
+/* 대메뉴 클릭시 디자인 */
+[id*="main"] + label.active{
+    border-left: 3px solid aqua;
+    color: aqua;
+    border-bottom: transparent;
+} 
+
+/* 대메뉴 클릭시 서브메뉴 바깥 디자인 */
+[id*="main"] + label.rotate + div{
+    padding: 5px;
+    padding-left: 25px;
+    max-height: 300px;     /* 대메뉴 클릭 시 세로로 벌어지는 높이를 설정한다. */
+    border-bottom: 1px solid gray;
+}
+
+/* 대메뉴 클릭시 화살표 이미지 회전 */
+ input[id*="main"]:checked + label em{
+    transition: all .35s;
+    transform: rotate(-180deg);
+   
+} 
+
+/* 대메뉴 mouseover할 때 색깔 변경 */
+input[id*="main"]:hover + label{
+    color: blue;
+}
+
+/* 서브메뉴 클릭시 subturnon 클래스 추가하여 색상 변경 */
+.subturnon{
+    color: red;
+    text-decoration: none;
+}
+
+/* 서브메뉴  mouseover할 때 색깔 변경 */
+.notact:hover{
+
+color: aqua;
+}
+
+.checkbox + label > span {
+    color: white;
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    font-size : 16px;
+    transition: transform 0.4s;
+  }
+
+.checkbox:checked + label > span {
+    transform: translateY(-50%) rotate(-180deg);
+  }

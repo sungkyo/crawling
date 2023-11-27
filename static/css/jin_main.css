@@ -1,0 +1,294 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Nanum+Gothic+Coding&family=Noto+Sans+KR&display=swap');
+.top-menu {
+    text-align: center;
+    background-color: #333;
+}
+
+.top-menu a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.top-menu a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* Style for the left menu */
+.left-menu {
+    width: 170px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #555;
+    padding-top: 20px;
+}
+
+.left-menu a {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+
+.left-menu a:hover {
+    background-color: #444;
+}
+
+*{
+    margin:0 ;
+    padding: 0;
+    user-select : auto;
+    box-sizing: border-box;
+    /* background-color: white; */
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* 버튼들을 감싸는 외부 박스 */
+.buttonsbox{
+    height: 42px;
+    margin : 1px;
+    padding: 0;
+    display: flex;
+
+    }
+
+    .buttonitem1{
+    margin: 0;
+    width: 130px;
+    padding: 0;
+    font-size: 11px;
+    display: flex;
+    justify-content: center;
+        /* 가로 정렬 가운데 */
+    align-items: center;
+        /* 세로 정렬 가운데 */
+    }
+
+    .buttonitem2{
+        margin: 0;
+        width: 180px;
+        padding: 0;
+        font-size: 11px;
+        display: flex;
+        justify-content: center;
+            /* 가로 정렬 가운데 */
+        align-items: center;
+            /* 세로 정렬 가운데 */
+    }
+
+/* select2 드롭다운의 css 정의하기 */
+.select2-results__option {
+    font-size:80%;
+    color: black;
+
+}
+
+/* 테이블 후버 색상 설정하기 */
+.table-hover tbody tr:hover {
+    background-color: YELLOW; /* Change to desired hover color */
+  }
+
+/* input 박스 설명 span에 대한 설정 */
+.spancss2{
+    margin-left: 20px;
+    font-size: 12px;
+    color: dark;
+
+}
+
+.par3{
+    margin: 0 auto;
+}
+
+.box{
+    display: flex;
+    gap: 15px;
+    height: 100%;
+}
+
+.box-sidebar{
+    width: 210px;
+    flex-shrink : 0;
+    height: 100vh;
+    display: inline-block;
+}
+
+.box-contents{
+    /* flex-shrink : 0; */
+    flex-grow:1;
+    background-color: white;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
+/* <!-- 테이블 속성을 별도로 지정한다. --> */
+
+table {
+    font-size: 13px;
+}
+
+th {
+    height: 24px;
+    vertical-align: middle;
+    text-align: center;
+    #color:rgba(33, 29, 29, 0.88);
+    background-color: #E2E2E2
+}
+
+td {
+    height: 20px;
+    vertical-align: middle;
+}
+
+/* <!-- form 스타일을 별도로 지정한다. --> */
+form {
+    font-size: 12px;
+}
+
+  /* ######  red_button 시작 ############ */
+.red_button {
+    padding: 3px 20px;
+    margin: 0px 8px 10px 8px;
+           /* 순서: top  right bottom left */
+    font-size: 13px;
+    line-height: 1.5;
+    border-radius: 3px;
+    color: #dc3545;
+    border: 1px solid #dc3545;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+    text-decoration: none; /* add this line */
+}
+.red_button:hover {
+    color: #ffffff;
+    background-color: #dc3545;
+}
+/* ######  red_button 끝 ############ */
+
+/* ######  green_button 시작 ############ */
+.green_button {
+  padding: 3px 20px;
+  margin: 0px 8px 4px 8px;
+         /* 순서: top  right bottom left */
+  font-size: 13px;
+  line-height: 1.5;
+  border-radius: 3px;
+  color: #008000;
+  border: 1px solid #28A745;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+  text-decoration: none;       /* a 태그의 밑 줄 제거하기 */
+}
+.green_button:hover {
+  color: #ffffff;
+  background-color: #28A745;
+}
+/* ######  green_button 끝 ############ */
+
+/* ######  blue_button 시작 ############ */
+.blue_button {
+  padding: 3px 20px;
+  margin: 0px 8px 4px 8px;
+         /* 순서: top  right bottom left */
+  font-size: 13px;
+  line-height: 1.5;
+  border-radius: 3px;
+  color: #007BFF;
+  border: 1px solid #007BFF;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+  text-decoration: none;       /* a 태그의 밑 줄 제거하기 */
+}
+.blue_button:hover {
+  color: #ffffff;
+  background-color: #007BFF;
+}
+/* ######  blue_button 끝 ############ */
+
+/* ######  gray_button 시작 ############ */
+.gray_button {
+  padding: 3px 20px;
+  margin: 0px 8px 10px 8px;
+         /* 순서: top  right bottom left */
+  font-size: 13px;
+  line-height: 1.5;
+  border-radius: 3px;
+  color: #6C757D;
+  border: 1px solid #6C757D;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+  text-decoration: none;       /* a 태그의 밑 줄 제거하기 */
+}
+.gray_button:hover {
+  color: #ffffff;
+  background-color: #6C757D;
+}
+/* ######  gray_button 끝 ############ */
+
+/* ######  black_button 시작 ############ */
+.black_button {
+  padding: 3px 20px;
+  margin: 0px 8px 4px 8px;
+         /* 순서: top  right bottom left */
+  font-size: 13px;
+  line-height: 1.5;
+  border-radius: 3px;
+  color: #202020;
+  border: 1px solid #202020;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+  text-decoration: none;       /* a 태그의 밑 줄 제거하기 */
+}
+.black_button:hover {
+  color: #ffffff;
+  background-color: #202020;
+}
+/* ######  black_button 끝 ############ */
+
+/* ######  white_yellow button 시작 ############ */
+.yellow_button {
+  padding: 3px 20px;
+  margin: 0px 8px 4px 8px;
+         /* 순서: top  right bottom left */
+  font-size: 13px;
+  line-height: 1.5;
+  border-radius: 3px;
+  color: white;
+  border: 1px solid white;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+  text-decoration: none;       /* a 태그의 밑 줄 제거하기 */
+}
+.yellow_button:hover {
+  color: #ffffff;
+  background-color: #202020;
+}
+/* ######  white_yellow button 끝 ############ */
+
+
+.select2-container--default .select2-results__option {
+  font-size: 12px;
+}
+
+.select2-container--default .select2-selection--single {
+  font-size: 12px;
+}
