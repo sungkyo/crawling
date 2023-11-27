@@ -1,0 +1,16 @@
+<table border="1" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <th width="20%" align="center">검색 일자</th>
+        <th width="70%" align="center">검색 명</th>
+        <th width="10%" align="center">검색 건수</th>
+    </tr>
+    <div style="margin:20px 0;">
+        {% for i in data %}
+            <tr style="border-top:solid 1px #dddddd;">
+                <td align="center">{{ i.created_at|date:"Ymd" }}</td><!-- 일자 형식 -->
+                <td align="center"><a href="/croll/croll_list.html?search={{ i.search_txt }}">{{ i.search_txt}}</a></td>
+                <td align="center">{{ i.cnt }} </td>
+            </tr>
+        {% endfor %}
+    </div>
+</table>

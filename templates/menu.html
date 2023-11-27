@@ -1,0 +1,66 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+   <a href="/?bo_type=home" class="navbar-brand"> IONSOFT.CO.KR </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+<!--        <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">-->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item" id="menu01"><a href="/croll/croll_view?bo_type=croll" class="nav-item nav-link">크롤링</a></li>
+                <li class="nav-item" id="menu02"><a href="/croll/SeleniumListView?bo_type=croll" class="nav-item nav-link">크롤링 List</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form -->
+    <script>
+        function getParameter(param) {
+            param = param.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            let regex = new RegExp("[\\?&]" + param + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+        var bo_type="{{ bo_type }}"
+        if(getParameter("bo_type")=="tableinfo"||bo_type=="tableinfo"){
+            document.getElementById('menu01').className = ' nav-item active';
+        }else{
+            document.getElementById('menu01').className = ' nav-item';
+        }
+        if(getParameter("bo_type")=="board"||bo_type=="board"){
+            document.getElementById('menu02').className = ' nav-item active';
+        }else{
+            document.getElementById('menu02').className = ' nav-item';
+        }
+        if(getParameter("bo_type")=="album"||bo_type=="album"){
+            document.getElementById('menu03').className = ' nav-item active';
+        }else{
+            document.getElementById('menu03').className = ' nav-item';
+        }
+        if(getParameter("bo_type")=="zip"||bo_type=="zip"){
+            document.getElementById('menu04').className = ' nav-item active';
+        }else{
+            document.getElementById('menu04').className = ' nav-item';
+        }
+        if(getParameter("bo_type")=="meta"||bo_type=="meta"){
+            document.getElementById('menu05').className = ' nav-item active';
+        }else{
+            document.getElementById('menu05').className = ' nav-item';
+        }
+
+        if(getParameter("bo_type")=="ocr"||bo_type=="ocr"){
+            document.getElementById('menu06').className = ' nav-item active dropdown';
+        }else{
+            document.getElementById('menu06').className = 'nav-item  dropdown';
+        }
+        if(getParameter("bo_type")=="login"||bo_type=="login"){
+            document.getElementById('menu07').className = ' nav-item active';
+        }else{
+            document.getElementById('menu07').className = 'nav-item ';
+        }
+    </script>
+</nav>
+

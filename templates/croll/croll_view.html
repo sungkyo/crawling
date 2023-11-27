@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block scripts %}
+    {{ block.super }}
+    <script>
+
+      funtion croll(){
+        document.getElementById("frmAlbum").submit();
+      }
+      try{
+      document.getElementById('currnetMonth').value= new Date().toISOString().slice(0, 7);
+
+      }catch(err){
+   //     alert(err);
+      }
+    </script>
+{% endblock %}
+
+{% block body %}
+<div id="top_menu">
+    {% include "menu.html" %}
+</div>
+    <!-- ======= Breadcrumbs ======= -->
+<div id="main_div">
+   <h5> HOME > {{ bo_type }} > {{ sub_menu_title }} </h5>
+    <main>
+
+  <script type="text/javascript">
+
+    $(document).ready(function(){
+        $('#btn1').click(function(){   //submit 버튼을 클릭하였을 때
+            let query = "username="+$('input[name=query]').val();
+
+            $.ajax({
+                type: "post",//데이터 전송 타입,
+                url : "/croll/croll",//데이터를 주고받을 파일 주소 입력,
+                data: {
+                            "csrfmiddlewaretoken": csrfToken,
+                            'query': query,
+                        },//보내는 데이터,
+                dataType:'text',//문자형식으로 받기 ,
+                success: function(result){
+                    alert("success");
+                    //작업이 성공적으로 발생했을 경우
+                },
+                error:function(){
+                    alert("error");
+                    //에러가 났을 경우 실행시킬 코드
+                }
+            })
+        })
+    });
+
+  //-->
+  </script>
+                <div style="margin:0px;text-align:right;">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr style="border-top:solid 1px #dddddd;">
+                                <td width="100%" align="right"><input type="input" name="query" id="query" style="width:30%;">
+                                    <button class="btn btn-outline-success my-2 my-sm-0"
+                                            id="btn1" name="btn1" style="margin-right:10px;" >
+                                        크롤링 데이타 생성</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+<iframe id="ifrAttr" name="ifrAttr" width="0" height="0"></iframe>
+python manage.py inspectdb --database=sqlite > scroll/models.py
+
+    </main><!-- End #main -->
+</div><!-- main div End -->
+{% include "tail.html" %}
+{% endblock %}

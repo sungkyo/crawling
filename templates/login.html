@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+    <h2>Login</h2>
+    {% if error_message %}
+    <p>{{ error_message }}</p>
+    {% endif %}
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            {% if request.session.name %}
+                <p>Your User ID is: {{ request.session.id }}</p>
+                <p>Your User ID is: {{ request.session.name }}</p>
+                <a href="{% url 'logout' %}">Logout</a>
+                {% else %}
+                    <label for="username">Username:</label>
+                    <input type="text" name="username" id="username" required><br>
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password" required><br>
+                    <input type="submit" value="Login">
+            {% endif %}
+        </form>
+        <p>1 Your User ID is: {{ request.session.id }}</p>
+    </form>
+</body>
+</html>

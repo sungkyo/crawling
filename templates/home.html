@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h3>Board with editor</h3>
+
+<div style="margin:20px 0;">
+    <a href="/board/board_write"><botton>등록</botton></a>
+</div>
+<div style="margin:20px 0;">
+    <a href="/album/album"><botton>앨범</botton></a>
+</div>
+
+<div style="margin:20px 0;">
+    <a href="/ocr/ocr_write"><botton>OCR</botton></a>
+</div>
+{% if rsBoard %}
+    <table border="1" cellpadding="0" cellpadding="0">
+    {% for i in rsBoard %}
+        <tr>
+            <td width="10%">
+                <a href="/board_view?boardid={{i.id}}">{{i.b_title}}</a>
+                <br>
+                {{i.b_writer}}<br>
+                {{i.b_date}}</td>
+            <td width="45%"><textarea style="width:98%;" rows="10">{{i.b_note}}</textarea></td>
+            <td width="45%">
+                {% autoescape off %}
+                {{ i.b_note }}
+                {% endautoescape %}
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+{% else %}
+<p>Data 없습니다.</p>
+{% endif %}
+
+</body>
+</html>
