@@ -8,14 +8,11 @@ from django.http import HttpResponse, JsonResponse
 from urllib.parse import quote_plus
 from selenium import webdriver
 from django.db import models, connection
-from django.db.models.functions import TruncDate
-from django.db.models import Count, F
-
-
+from urllib.parse import quote, unquote
+from selenium.webdriver.common.by import By
 # 크롤링용 임포트
 import requests
 import time
-
 from bs4 import BeautifulSoup
 
 context = {}
@@ -66,20 +63,20 @@ class SearchListView(View):
         print("list_text=" + str(list))
         for i in list:
             i_text = str(i.get_text())
-            print("i_text=" + i_text)
+            #print("i_text=" + i_text)
             post_title = str(i.get_text())
-            print("post_title=" + post_title)
+            #print("post_title=" + post_title)
 
             posting_date = soup.select(
                 'dl > dd.txt_block > span'
             )
             posting_date = str(posting_date)
-            print("posting_date="+posting_date)
+            #print("posting_date="+posting_date)
             blog_url = soup.select(
                 'dl > dd.txt_block > span > a.url'
             )
             blog_url= str(blog_url)
-            print("blog_url=" + blog_url)
+            #print("blog_url=" + blog_url)
             rsData = TbCroll(posttitle=post_title, postingdate=posting_date, blogurl=blog_url)
             rsData.save()
 
@@ -102,17 +99,18 @@ def SeleniumListView(request):
         d['created_at'] = i[1]
         d['cnt'] = i[2]
         data.append(d)
-    #cursor = connection.cursor()
-    #cursor.execute("""SELECT search_txt, created_at, COUNT(id) AS cnt FROM TB_CROLL group by search_txt, created_at""")
-    #queryset = cursor.fetchall()
-    #print("<=dental_list: " + str(a1))
-
-    #context['queryset'] = queryset
+    print("SeleniumDetailView")
     return render(request, 'croll/croll_list.html', {'data': data})
 
-def SeleniumRunView(request):
-    print("SeleniumDetailView")
+def SeleniumDetailView(request):
+    print("<---SeleniumDetailView")
+    query = request.GET.get("search", '')
+    queryset = TbCroll.objects.filter(search_txt=query).order_by('createdat')
 
+    context['queryset'] = queryset
+    return render(request, 'croll/detail_list.html', context)
+
+def SeleniumRunView(request):
     query = request.GET.get("search", '')
 
     # Check if the query is empty
@@ -127,14 +125,22 @@ def SeleniumRunView(request):
     while True:
         driver.execute_script('window.scrollTo(0, document.body.scrollHeight);')
         time.sleep(1)
-        driver.execute_script("window.scrollTo(0, document.body.scrollHeight-50);")
-        time.sleep(1)
         new_height = driver.execute_script("return document.body.scrollHeight")
 
+        print("new_height: "+str(new_height)+" = "+str(last_height))
         if last_height == new_height:
-            break
-        else:
-            last_height = new_height
+            time.sleep(1)
+            new_height = driver.execute_script("return document.body.scrollHeight")
+            try:
+                print("<----1")
+                #driver.find_elements_by_class_name(".T7sFge.sW9g3e.VknLRd").click()  # More results 버튼
+                driver.find_element(By.CLASS_NAME, '.T7sFge.sW9g3e.VknLRd').click()
+                print("<----3")
+            except:
+                print("<----2")
+                if new_height == last_height:
+                    break
+        last_height = new_height
 
     html = driver.page_source
     soup = BeautifulSoup(html)
@@ -143,7 +149,8 @@ def SeleniumRunView(request):
     for i in v:
         post_title = str(i.select_one('.LC20lb.DKV0Md').text)
         #print(i.a.attrs['href'])
-        blog_url = str(i.a.attrs['href'])
+        blog_url = unquote((i.a.attrs['href']))
+        #print("blog_url:"+blog_url)
         rsData = TbCroll(posttitle=post_title, search_txt=query, blogurl=blog_url, createdat=datetime.now())
         rsData.save()
     driver.close()

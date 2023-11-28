@@ -7,5 +7,6 @@ urlpatterns = [
     path('croll/croll', views.SearchListView.as_view(), name="croll"),
     path('croll/SeleniumListView', views.SeleniumListView, name="SeleniumListView"),
     path('croll/SeleniumRunView', views.SeleniumRunView, name="SeleniumRunView"),
+    path('croll/SeleniumDetailView', views.SeleniumDetailView, name="SeleniumDetailView"),
     #path('croll/crollinfo', views.croll_info, name="crollinfo"),
 ]
