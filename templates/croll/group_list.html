@@ -8,7 +8,7 @@
         {% for i in data %}
             <tr style="border-top:solid 1px #dddddd;">
                 <td align="center">{{ i.created_at|date:"Ymd" }}</td><!-- 일자 형식 -->
-                <td align="center"><a href="/croll/croll_list.html?search={{ i.search_txt }}">{{ i.search_txt}}</a></td>
+                <td align="center"><a href="/croll/SeleniumDetailView?search={{ i.search_txt }}">{{ i.search_txt}}</a></td>
                 <td align="center">{{ i.cnt }} </td>
             </tr>
         {% endfor %}

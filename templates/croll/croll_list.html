@@ -27,14 +27,9 @@
             <div class="section-title" data-aos="fade-up">
                 <h3>Crawling List</h3>
                 <div style="margin:20px 0;text-align:right;">
-                    pip install selenium<Br>chrome & chrome 버젼이 같이야 됨 119.0.6045.105 올려놈<Br>
-                    ORM에서는 Group by 문제가 있어 cursor 사용 Sql 만듬 <Br>group by 참조 사이트  blog.boxcorea.com/wp/archives/2620
                     <table border="0" cellpadding="0" cellspacing="0" width="100%">
                         <tr style="border-top:solid 1px #dddddd;">
                             <form action="{% url 'SeleniumRunView' %}" method="GET">
-                                <td width="40%" align="left">
-
-                                </td>
                                 <td width="30%" align="left">검색 명:<input type="input" name="search" style="width:60%;"></td>
                                 <td width="10%">
                                     <button class="btn btn-outline-success my-2 my-sm-0" style="margin-right:10px;" >검색</button>
@@ -50,6 +45,8 @@
             {% endif %}
                 {% include "croll/group_list.html" %}
           </div>
+                    <Br>pip install selenium<Br>pip install urllib3 <Br>chrome & chrome 버젼이 같이야 됨 119.0.6045.105 올려놈<Br>
+                    ORM에서는 Group by 문제가 있어 cursor 사용 Sql 만듬 <Br>group by 참조 사이트  blog.boxcorea.com/wp/archives/2620
         </section><!-- End Services Section -->
     </main><!-- End #main -->
 </div><!-- main div End -->
